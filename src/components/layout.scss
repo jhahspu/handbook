@@ -1,0 +1,246 @@
+@import url('https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap');
+
+$main-0: hsla(40, 4%, 14%, 1);
+$main-1: hsla(34, 6%, 24%, 1);
+$main-2: hsla(38, 16%, 46%, 1);
+$main-3: hsla(38, 16%, 76%, 1);
+$main-4: hsla(46, 100%, 97%, 1);
+
+$red:  hsla(355, 97%, 44%, 1);
+$blue: hsla(253, 97%, 44%, 1);
+$green: hsla(145, 97%, 34%, 1);
+
+$box-shadow: 0px 1px 6px 0px rgba(0, 0, 0, 0.3);
+$border: 1px solid $main-3;
+$border-radius: 6px;
+
+@mixin container {
+  width: 90%;
+  max-width: 1080px;
+  margin: 0 auto;
+}
+
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+:root {
+  scroll-behavior: smooth;
+  overflow-y: scroll;
+  color: $main-0;
+  font-size: 16px;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+  @media (max-width: 45rem) {
+    font-size: 14px;
+  }
+}
+
+
+a {
+  color: $blue;
+  display: inline-block;
+  transition: color 0.2s ease-in-out;
+
+    &:hover {
+      color: $main-3;
+    }
+}
+ul {
+  list-style: none;
+}
+pre {
+  max-width: 100%;
+  max-height: 15rem;
+  padding: .7rem;
+  background-color: $main-4;
+  border-radius: $border-radius;
+  border: $border;
+  white-space: break-spaces;
+  overflow: auto;
+
+  &::-webkit-scrollbar {
+    width: 0.5rem;
+    height: 0.5rem;
+  }
+  &::-webkit-scrollbar-corner,
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: $main-3;
+    border-radius: 0.5rem;
+    border: 1px solid $main-4;
+  }
+}
+img {
+  width: 100%;
+  overflow: hidden;
+  border: $border;
+  border-radius: $border-radius;
+}
+
+
+
+.layout {
+   width: 100%;
+   min-height: 100vh;
+   display: grid;
+   grid-template-rows: auto 1fr auto;
+}
+.spacing > * + * {
+  margin-top: 1rem;
+}
+
+
+
+header {
+  background-color: $main-0;
+  box-shadow: $box-shadow;
+
+  nav {  
+    @include container();
+    .logo {
+
+      a {
+        padding: 1rem 0;
+        color: $main-4;
+        text-decoration: none;
+        font-family: 'Black Ops One', cursive;
+        letter-spacing: 0.1ch;
+
+        &:hover {
+          color: $main-3;
+        }
+      }
+    }
+  }
+}
+
+
+
+
+main {
+  @include container();
+
+  .index {
+    padding-top: 2rem;
+
+    h3 {
+
+      a {
+        position: relative;
+        padding: 0.25rem .75rem;
+        color: transparent;
+        color: $main-0;
+        font-family: 'Black Ops One', cursive;
+        font-size: 2.5rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        text-decoration: none;
+        letter-spacing: 0.1ch;
+        transition: all 0.2s ease-in-out;
+
+        &:before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          padding: 0.25rem .75rem;
+          color: transparent;
+          transition: all 0.2s ease-in-out;
+        }
+
+        &:after {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          padding: 0.25rem .75rem;
+          color: transparent;
+          transition: all 0.2s ease-in-out;
+        }
+
+        &:hover {
+
+          &:before {
+            content: attr(data-text);
+            color: $blue;
+            transform: translate(.25rem, -.25rem);
+          }
+
+          &:after {
+            content: attr(data-text);
+            color: $red;
+            transform: translate(.5rem, -.5rem);
+          }
+        }
+      }
+    }
+  }
+
+  .handbook {
+
+    .handbook-head {
+      padding: 0.5rem 0;
+
+      h1 {
+        line-height: 1;
+        font-family: 'Black Ops One', cursive;
+      }
+      h4 {
+        color: $main-2;
+        font-weight: 400;
+      }
+    }
+
+    .handbook-body {
+
+      div {
+        a { padding: 0.5rem; }
+        h1 { margin-top: 1.5rem; }
+        h2 { margin-top: 1rem; }
+        h3 { margin-top: .75rem; }
+        p { margin-top: 0; }
+        pre { margin-top: .25rem; }
+        p {
+          span { margin: 1rem 0; }
+        }
+        p {
+          span {
+            a {
+              img {
+                overflow: hidden;
+                border: $border;
+                border-radius: $border-radius;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+
+
+
+footer {
+  margin-top: 1rem;
+  background-color: $main-0;
+  box-shadow: 0 -2px 4px 0 rgba(0, 0, 0, 0.3);
+
+  nav {
+    @include container();
+
+    a {
+      padding: 1rem 0;
+      color: $main-4;
+    }
+  }
+}
+
