@@ -302,11 +302,201 @@ func main() {
 
 
 
+# Data binding and Validation
+### update video.go
+```golang
+package entity
 
-# 
+// Person struct for informations about video author
+type Person struct {
+  Name  string `json:"name" binding:"required"`
+  // Age required >= 12 , <=130 
+	Age   int8   `json:"age" binding:"gte=12,lte=130"`
+	Email string `json:"email" binding:"required,email"`
+}
+
+// Video struct with JSON serialization
+type Video struct {
+	Title       string `json:"title" binding:"min=5,max=100"`
+	Description string `json:"description" binding:"max=255"`
+	URL         string `json:"url" binding:"required,url"`
+	Author      Person `json:"author" binding:"required"`
+}
+```
+
+
+### update controller/video-controller.go
+```golang
+package controller
+
+...
+
+// Save json video or return error
+func (c *controller) Save(ctx *gin.Context) error {
+	var video entity.Video
+	// Extract json from context
+	err := ctx.ShouldBindJSON(&video)
+	if err != nil {
+		return err
+	}
+	// Save & return video
+	c.service.Save(video)
+	return nil
+}
+```
+
+
+### updated server.go
+```golang
+package main
+
+...
+
+func main() {
+
+...
+
+	server.POST("/videos", func(ctx *gin.Context) { 
+		err := videoController.Save(ctx)
+		if err != nil {
+			ctx.JSON(http.StatusBadRequest, gin.H{
+				"error" : err.Error(),
+			})
+		} else {
+			ctx.JSON(http.StatusOK, gin.H{"message": "Video Input Valid!"})
+		}
+  })
+...
+}
+```
+![postman4-1](img/postman4-1.webp)
+![postman4-2](img/postman4-2.webp)
+
+
+### Custom validator in Video struct - video.go
+```golang
+package entity
+...
+	Title       string `json:"title" binding:"min=5,max=100" validate:"lang"`
+...
+}
+```
+
+
+### validatos/validator.go
+```golang
+package validators
+
+import (
+	"strings"
+
+	"github.com/go-playground/validator/v10"
+)
+
+// ValidateLangTitle is a custom validator that will return a bool
+// In this case if the title of the video contains "Golang", the func will return TRUE
+func ValidateLangTitle(field validator.FieldLevel) bool {
+	return strings.Contains(field.Field().String(), "Golang")
+}
+```
+
+### updated Save method in controller/video-controller.go
+```golang
+package controller
+
+...
+
+// Save json video or return error
+func (c *controller) Save(ctx *gin.Context) error {
+	var video entity.Video
+	// Extract json from context
+	err := ctx.ShouldBindJSON(&video)
+	if err != nil {
+		return err
+	}
+	// Custom validator
+	err = validate.Struct(video)
+	if err != nil {
+		return err
+	}
+	// Save & return video
+	c.service.Save(video)
+	return nil
+}
+```
+![postman4-3](img/postman4-3.webp)
+![postman4-4](img/postman4-4.webp)
+
+
+
+# Multirouting and Templating
+
+
 ### 
 ```golang
+package main
+...
 
+func main() {
+
+	...
+
+	// Static Assets for html
+	server.Static("/css", "./templates/css")
+
+	// Loading html templates
+	server.LoadHTMLGlob("templates/*.html")
+
+	...
+
+	// Group API Endpoints
+	apiRoutes := server.Group("/api")
+	{
+		apiRoutes.GET("/videos", func(ctx *gin.Context) {
+			ctx.JSON(200, videoController.FindAll())
+		})
+		apiRoutes.POST("/videos", func(ctx *gin.Context) {
+			err := videoController.Save(ctx)
+			if err != nil {
+				ctx.JSON(http.StatusBadRequest, gin.H{
+					"error": err.Error(),
+				})
+			} else {
+				ctx.JSON(http.StatusOK, gin.H{"message": "Video Input Valid!"})
+			}
+		})
+	}
+
+	// Group View Routes
+	viewRoutes := server.Group("/videos")
+	{
+		viewRoutes.GET("/", videoController.ShowVideos)
+	}
+
+	server.Run(":9000")
+}
 ```
-####
-![]()
+
+
+### create templates/header -footer -index.html
+### index.html 
+```html
+{{ template "header.html" }}
+
+<!-- Index Content -->
+{{range .videos}}
+<div class="video">
+  <h2>title: {{ .Title }}</h2>
+  <p>description: {{ .Description }}</p>
+  <p>url: {{ .URL }}</p>
+  <p>author.name: {{ .Author.Name }}</p>
+  <p>author.age: {{ .Author.Age }}</p>
+  <p>author.email: {{ .Author.Email }}</p>
+  <div class="video-frame">
+    <iframe src="{{ .URL }}"></iframe>
+  </div>
+</div>
+{{end}}
+
+{{ template "footer.html" }}
+```

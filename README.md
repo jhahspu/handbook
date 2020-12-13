@@ -6,8 +6,11 @@ From the many ways one can keep notes, I think that a website like a blog would 
 Not live yet, but soon, probably on netlify
 
 ToDo:
-- [ ] Golang - GIN
 - [ ] Golang - Cheatsheet
-- [ ] GatsbyJS
-- [ ] Angular
-- [ ] Python 
+- [x] Golang - GIN
+- [ ] Golang - RPC
+- [ ] Golang - gRPC
+- [ ] Golang - Web Scraper
+- [ ] GatsbyJS - Cheatsheet
+- [ ] Angular - Cheatsheet
+- [ ] Python - Common use scenarios
