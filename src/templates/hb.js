@@ -13,6 +13,7 @@ const Template = ({data}) => {
       <div className="handbook">
         <div className="handbook-head">
           <h1>{post.frontmatter.title}</h1>
+          <h3>{post.frontmatter.category}</h3>
           <h4>Last Update:<span>{post.frontmatter.date}</span></h4>
         </div>
         <div className="handbook-body">
@@ -30,6 +31,7 @@ export const postQuery = graphql`
         frontmatter {
           path
           title
+          category
           date
         }
     }

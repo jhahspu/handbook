@@ -1,7 +1,7 @@
 ---
-path: "/golang-gin"
-date: "2020-12-11"
-title: "Gin - Golang"
+path: "/gin-golang"
+date: "Dec '20"
+title: "Gin"
 author: "jhahspu"
 category: "Go"
 ---
@@ -239,7 +239,7 @@ func main() {
 
 
 
-### updated server.gp with simple function to write Log to file
+### updated server.go with simple function to write Log to file
 ```golang
 package main
 
