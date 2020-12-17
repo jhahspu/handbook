@@ -11,6 +11,7 @@ category: "Scripting"
 get-executionpolicy
 # Restricted
 # Options: restricted, unrestricted, remotesigned
+
 set-executionpolicy remotesigned
 # [Y]Yes [A]Yes To All [N]No [L]No To All [S]Suspend [?]Help 
 ```

@@ -5,7 +5,10 @@
 
 ToDo:
 - [x] Golang - Gin
+
+- [x] Typescript
 - [x] Gatsby
 - [ ] Angular
+
 - [x] Powershell
 

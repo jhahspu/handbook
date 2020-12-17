@@ -124,7 +124,7 @@ img {
 
 header {
   background-color: rgba(255, 255, 255, 0.45);
-  backdrop-filter: blur(2rem);
+  backdrop-filter: blur(40px);
   border-bottom: 2px solid transparent;
   background-clip: padding-box;
 
@@ -157,9 +157,8 @@ main {
   
       .post {
         padding: 1rem;
-        // color: currentColor;
         background-color: rgba(255, 255, 255, 0.45);
-        backdrop-filter: blur(2rem);
+        backdrop-filter: blur(40px);
         border: 2px solid transparent;
         background-clip: padding-box;
         border-radius: .5rem;
@@ -178,10 +177,6 @@ main {
         .post-category {
           font-size: 1.2rem;
         }
-  
-        &:hover {
-          // color: $blue;
-        }
       }
     }
   }
@@ -190,7 +185,7 @@ main {
     min-height: 100%;
     padding-bottom: 1rem;
     background-color: rgba(255, 255, 255, 0.45);
-    backdrop-filter: blur(2rem);
+    backdrop-filter: blur(40px);
 
     .handbook {
       @include container();
@@ -201,6 +196,7 @@ main {
         h1 {
           line-height: 1;
           font-family: 'Black Ops One', cursive;
+          font-weight: 500;
         }
         h4 {
           font-weight: 400;
@@ -241,10 +237,10 @@ main {
 
 footer {
   background-color: rgba(255, 255, 255, 0.45);
-  backdrop-filter: blur(2rem);
+  backdrop-filter: blur(40px);
   border-top: 2px solid transparent;
   background-clip: padding-box;
-
+  
   nav {
     @include container();
 
