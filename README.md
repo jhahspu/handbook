@@ -5,6 +5,7 @@
 
 ToDo:
 - [x] Golang - Gin
-- [x] GatsbyJS
+- [x] Gatsby
+- [ ] Angular
 - [x] Powershell
 

@@ -18,6 +18,7 @@ const Layout = ({ children }) => {
 
   return (
     <>
+    <div className="img"></div>
     <div className="layout">
       <Header siteTitle={data.site.siteMetadata?.title || `Title`} />
       <main>{children}</main>
