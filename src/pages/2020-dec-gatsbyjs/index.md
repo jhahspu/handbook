@@ -295,4 +295,3 @@ Options:
   -h, --help               Show help  [boolean]
   -v, --version            Show the version of the Gatsby CLI and the Gatsby package in the current project    [boolean]
 ```
-

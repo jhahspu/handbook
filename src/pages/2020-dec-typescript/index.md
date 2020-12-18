@@ -158,7 +158,7 @@ let backgroundColor = Colors.Red;
 ```
 
 
-# Install
+# Setup
 ```powershell
 npm install -g typescript
 
@@ -172,6 +172,6 @@ tsc *.ts [file_name].js
 # What is Typescript
 - Superset of JavaScript
 - Strong/Static typed (optional)
-- Classes, Interfaces, Constructers, Access modifiers, Fields, Properties, etc
+- Classes, Interfaces, Constructors, Access modifiers, Fields, Properties, etc
 - Catch errors at compile time
 
