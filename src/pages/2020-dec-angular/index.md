@@ -1,9 +1,9 @@
 ---
 path: "/angularjs"
 date: "Dec '20"
-title: "AngularJS"
+title: "Angular Basics"
 author: "jhahspu"
-category: "JS"
+category: "AngularJS"
 ---
 
 
