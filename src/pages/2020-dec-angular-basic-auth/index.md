@@ -1,12 +1,98 @@
 ---
 path: "/angular-fire-basic-auth"
 date: "Dec '20"
-title: "Angular Fire Basic Auth"
+title: "Angular+Firebase"
 author: "jhahspu"
 category: "AngularJS"
 ---
 
-## 9: components/home/home.component.html
+
+## 13: Firebase Database Rules:
+```javascript
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    match /users/{userId} {
+        allow write, read: if isOwner(userId);
+    }
+
+    // Reusable function to determine document ownership
+    function isOwner(userId) {
+        return request.auth.uid == userId
+    }
+  }
+}
+```
+
+## 12: Protecting Routes in app-routing.module.ts
+```javascript
+...
+import { AuthGuard } from './auth.guard';
+...
+
+{ path: 'admin', component: AdminComponent, canActivate: [AuthGuard] },
+```
+
+## 11: Setup Guard with: ng g guard auth
+### app/auth.quard.ts
+```javascript
+import { Injectable } from '@angular/core';
+import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { AuthService } from './services/auth.service';
+import { tap, map, take } from 'rxjs/operators';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class AuthGuard implements CanActivate {
+
+  constructor(private auth: AuthService, private router: Router) {}
+
+  canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> {
+    return this.auth.user$.pipe(
+      take(1),
+      map(user => !!user),
+      tap(loggedIn => {
+        if (!loggedIn) {
+          console.log('access denied')
+          this.router.navigate(['/login']);
+        }
+      })
+    )
+  }
+  
+}
+```
+
+## 10: Firebase Hosting
+### Terminal:
+```javascript
+// deploy app to firebase
+firebase deploy
+
+// CHECK firebase.json, should be:
+"public": "dist/[app_name]",
+
+// build app
+ng build --prod
+
+// init firebase
+firebase init
+
+// login to firebase
+firebase login
+
+// check version
+firebase --version
+
+// install firebase-tools
+npm install -g firebase-tools
+```
+
+
+## 9: HTML sample for handling login/logout
+### components/home/home.component.html
 ```html
 <h1>Home Page</h1>
 
@@ -38,7 +124,7 @@ category: "AngularJS"
 </ng-template>
 ```
 
-## 8: components/home/home.component.ts
+## 8: Using Auth Service in components/home/home.component.ts
 ```javascript
 import { Component } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
@@ -55,7 +141,7 @@ export class HomeComponent {
 }
 ```
 
-## 7: services/auth.service.ts
+## 7: Auth Service services/auth.service.ts
 ```javascript
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
@@ -122,7 +208,7 @@ export class AuthService {
 
 ```
 
-## 6: interfaces/user.model.ts
+## 6: Create User Interface interfaces/user.model.ts
 ```javascript
 export interface User {
   uid: string;
@@ -132,7 +218,7 @@ export interface User {
 }
 ```
 
-## 5: app-routing.module.ts
+## 5: Setup Routes in app-routing.module.ts
 ```javascript
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -151,7 +237,7 @@ const routes: Routes = [
 export class AppRoutingModule { }
 ```
 
-## 4: app.module.ts
+## 4: Initialize app in app.module.ts
 ```javascript
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -192,7 +278,8 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 export class AppModule { }
 ```
 
-## 3: environmnets/environment.ts | environment.prod.ts
+## 3: Setup Env variables
+### environmnets/environment.ts | environment.prod.ts
 ```javascript
 export const environment = {
   ...
