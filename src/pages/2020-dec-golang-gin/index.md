@@ -1,24 +1,26 @@
 ---
-path: "/gin-golang"
+path: "/golang-gin"
 date: "Dec '20"
-title: "Gin"
+title: "Gin Package"
 author: "jhahspu"
-category: "Go"
+category: "go"
 ---
 
-# Project Setup & Basic Gin Server
-### Project init and installing Gin package
-```
+### Project Setup
+#### Project init and get Gin package
+```powershell
 go mod init github.com/[github_user]/[package_name]
-```
-```
+
 go get github.com/gin-gonic/gin
 ```
 
 
+#####
 
-### server.go - basic gin server
-```golang
+
+### Basic Gin server
+#### server.go
+```go
 package main
 
 import "github.com/gin-gonic/gin"
@@ -43,11 +45,12 @@ func main() {
 ![postman](img/postman1.webp)
 
 
+#####
 
 
-# Create first End-Points
-### entity/video.go
-```golang
+### Create first End-Points
+#### entity/video.go
+```go
 package entity
 
 // Video struct with JSON serialization
@@ -60,9 +63,8 @@ type Video struct {
 ```
 
 
-
-### service/video-service.go
-```golang
+#### service/video-service.go
+```go
 package service
 
 import "github.com/jhahspu/gogin/entity"
@@ -96,10 +98,9 @@ func (service *videoService) FindAll() []entity.Video {
 ```
 
 
-
-### controller/video-controller.go
-Handlers for the HTTP Verbs GET and POST
-```golang
+#### Handlers for the HTTP Verbs GET and POST
+#### controller/video-controller.go
+```go
 package controller
 
 import (
@@ -144,9 +145,8 @@ func (c *controller) Save(ctx *gin.Context) entity.Video {
 ```
 
 
-
-### update server.go
-```golang
+#### update server.go
+```go
 package main
 
 import (
@@ -183,10 +183,13 @@ func main() {
 
 
 
+#####
 
-# Custom Middleware
-### middleware/logger.go
-```golang
+
+
+### Custom Middleware
+#### middleware/logger.go
+```go
 package middleware
 
 import (
@@ -215,8 +218,8 @@ func Logger() gin.HandlerFunc {
 
 
 
-### updated server.go with custom Logger
-```golang
+#### updated server.go with custom Logger
+```go
 package main
 ...
 
@@ -239,8 +242,8 @@ func main() {
 
 
 
-### updated server.go with simple function to write Log to file
-```golang
+#### updated server.go with simple function to write Log to file
+```go
 package main
 
 ...
@@ -263,8 +266,8 @@ func main() {
 
 
 
-### middleware/basic-auth.go for basic authentication
-```golang
+#### middleware/basic-auth.go for basic authentication
+```go
 package middleware
 
 import "github.com/gin-gonic/gin"
@@ -279,8 +282,8 @@ func BasicAuth() gin.HandlerFunc {
 ```
 
 
-### updated server.go with middleware for basic authentication
-```golang
+#### updated server.go with middleware for basic authentication
+```go
 package main
 ...
 
@@ -300,11 +303,12 @@ func main() {
 ![postman3-4](img/postman3-4.webp)
 
 
+#####
 
 
-# Data binding and Validation
-### update video.go
-```golang
+### Data binding and Validation
+#### update video.go
+```go
 package entity
 
 // Person struct for informations about video author
@@ -325,8 +329,8 @@ type Video struct {
 ```
 
 
-### update controller/video-controller.go
-```golang
+#### update controller/video-controller.go
+```go
 package controller
 
 ...
@@ -346,8 +350,8 @@ func (c *controller) Save(ctx *gin.Context) error {
 ```
 
 
-### updated server.go
-```golang
+#### updated server.go
+```go
 package main
 
 ...
@@ -373,8 +377,8 @@ func main() {
 ![postman4-2](img/postman4-2.webp)
 
 
-### Custom validator in Video struct - video.go
-```golang
+#### Custom validator in Video struct - video.go
+```go
 package entity
 ...
 	Title       string `json:"title" binding:"min=5,max=100" validate:"lang"`
@@ -383,8 +387,8 @@ package entity
 ```
 
 
-### validatos/validator.go
-```golang
+#### validatos/validator.go
+```go
 package validators
 
 import (
@@ -400,8 +404,8 @@ func ValidateLangTitle(field validator.FieldLevel) bool {
 }
 ```
 
-### updated Save method in controller/video-controller.go
-```golang
+#### updated Save method in controller/video-controller.go
+```go
 package controller
 
 ...
@@ -428,12 +432,14 @@ func (c *controller) Save(ctx *gin.Context) error {
 ![postman4-4](img/postman4-4.webp)
 
 
+#####
 
-# Multirouting and Templating
+
+### Multirouting and Templating
 
 
-### 
-```golang
+#### server.go
+```go
 package main
 ...
 
@@ -479,7 +485,7 @@ func main() {
 
 
 ### create templates/header -footer -index.html
-### index.html 
+#### index.html 
 ```html
 {{ template "header.html" }}
 

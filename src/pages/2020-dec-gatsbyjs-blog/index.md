@@ -1,13 +1,13 @@
 ---
-path: "/gatsbyjs"
+path: "/gatsby-blog"
 date: "Dec '20"
-title: "GatsbyJS"
+title: "Gatsby Blog Template"
 author: "jhahspu"
-category: "JS"
+category: "gatsby"
 ---
 
-# Simple Blog
-### 1: Create project
+
+### New Gatsby Project
 ```powershell
 gatsby new [project_name]
 
@@ -16,7 +16,12 @@ npm i gatsby-source-filesystem
 npm i gatsby-transformer-remark
 ```
 
-### 2: Blog Post / pages/yyyy-mm-dd-title/index.md
+
+#####
+
+
+### Blog Post Markup Template
+#### pages/yyyy-mm-dd-title/index.md
 ```javascript
 ---
 path: "/[path_name]"
@@ -46,7 +51,12 @@ function fancyAlert(arg) {
 //```
 ```
 
-### 3: templates/blogpost_template.js
+
+#####
+
+
+### Component Template
+#### templates/blogpost_template.js
 ```javascript
 import React from 'react'
 import Layout from "../components/layout"
@@ -87,7 +97,12 @@ export const postQuery = graphql`
 export default Template
 ```
 
-### 4: gatsby-node.js
+
+#####
+
+
+### Gatsby Node Config
+#### gatsby-node.js
 ```javascript
 const path = require('path');
 
@@ -127,7 +142,12 @@ exports.createPages = ({actions, graphql}) => {
 }
 ```
 
-### 5: index.js
+
+#####
+
+
+### Index Layout and GraphQL
+#### pages/index.js
 ```javascript
 import React from "react"
 import { graphql, Link } from "gatsby"
@@ -174,124 +194,4 @@ export const pageQuery = graphql`
 `
 
 export default IndexPage
-```
-
-
-# Usefull Packages
-### Filesystem
-Work with files
-```javascript
-npm i gatsby-source-filesystem
-
-// plugins in 'gatsby-config.js':
-plugins: [
-  ...
-  {
-    resolve: `gatsby-source-filesystem`,
-    options: {
-      name: `pages`,
-      path: `${__dirname}/src/pages`
-    },
-  },
-  ...
-```
-
-### Transformer Remark
-Render markup to html.
-```javascript
-npm i gatsby-transformer-remark
-
-// plugins in 'gatsby-config.js':
-// for Images the 'resolve' is needed. maxWidth is mandatory
-plugins: [
-  ...
-  `gatsby-transformer-remark`,
-  {
-    resolve: `gatsby-transformer-remark`,
-    options: {
-      plugins: [
-        {
-          resolve: `gatsby-remark-images`,
-          options: {
-            maxWidth: 768,
-          },
-        },
-      ],
-    },
-  },
-  ...
-]
-```
-
-### Catch Links
-```
-npm i gatsby-plugin-catch-links
-```
-
-### Sass
-```javascript
-npm install node-sass@4.14.1 gatsby-plugin-sass
-
-// plugins in 'gatsby-config.js':
-plugins: [
-  `gatsby-plugin-sass`,
-  ...
-]
-
-// rename 'layout.css' to 'layout.scss'
-// in 'layout.js' import './layout.scss'
-```
-
-
-
-
-# Setup
-```
-npm install -g gatsby-cli
-```
-### CLI commands
-```powershell
-# Create new Gatsby project.
-gatsby new [project_name]
-
-# Start development server. Watches files, rebuilds, and hot reloads if something changes
-gatsby develop
-
-# available commands
-gatsby --help
-
-# Build a Gatsby project.
-gatsby build
-
-# Serve previously built Gatsby site.
-gatsby serve
-
-# Get environment information for debugging and issue reporting
-gatsby info
-
-# Wipe the local gatsby environment including built assets and cache
-gatsby clean
-
-# Get a node repl with context of Gatsby environment, see (https://www.gatsbyjs.com/docs/gatsby-repl/)
-gatsby repl
-
-# [EXPERIMENTAL] Run a recipe
-gatsby recipes [recipe]
-
-# Useful commands relating to Gatsby plugins
-gatsby plugin <cmd> [plugins...]
-
-
-# Enable or disable Gatsby anonymous analytics collection.
-gatsby telemetry
-
-#  View or set your gatsby-cli configuration settings.
-gatsby options [cmd] [key] [value]
-
-Options:
-  --verbose                Turn on verbose output   [boolean] [default: false]
-  --no-color, --no-colors  Turn off the color in output   [boolean] [default: false]
-  --json                   Turn on the JSON logger    [boolean] [default: false]
-  -h, --help               Show help  [boolean]
-  -v, --version            Show the version of the Gatsby CLI and the Gatsby package in the current project    [boolean]
 ```

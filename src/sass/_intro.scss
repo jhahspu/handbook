@@ -1,0 +1,53 @@
+.intro {
+  @include container($width-100);
+
+  .posts {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
+    gap: 1rem;
+    padding: 1rem 0;
+
+    .post {
+      @include glass($glass-txt, $glass-bg, $glass-blur);
+      padding: .75rem;
+      border-radius: .5rem;
+      box-shadow: $shadow-a;
+      text-align: center;
+      z-index: 1;
+      transition: all 0.15s ease;
+      user-select: none;
+
+      &:hover {
+        @include glass($glass-txt, $glass-bg-acc, $glass-blur);
+      }
+
+      & > * {
+        margin: 0;
+        padding: 0;
+      }
+
+      .post-title {
+        height: 2.8rem;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        text-overflow: ellipsis;
+        word-break: break-word;
+        line-height: 1.4rem;
+        font-size: 1.2rem;
+        font-weight: 400;
+        text-align: center;
+      }
+      .post-category {
+        color: $main-8;
+        font-size: 1rem;
+      }
+      .post-date {
+        color: $main-7;
+        font-size: .9rem;
+        text-transform: uppercase;
+      }
+    }
+  }
+}

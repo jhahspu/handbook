@@ -1,0 +1,52 @@
+#home {
+  @include btn(1rem, $main-1, $acc);
+  @include glass($glass-txt, $glass-bg-acc, $glass-blur);
+  position: fixed;
+  left: 5%;
+  bottom: 5%;
+
+  @media (min-width: $width-900) {
+    opacity: 1;
+  }
+}
+
+.hb {
+  @include glass($glass-txt, $glass-bg, $glass-blur);
+  min-height: 100vh;
+  padding-bottom: 10rem;
+
+  .handbook {
+    @include container($width-900);
+
+    .handbook-head {
+      padding: 0.5rem 0;
+
+      p {
+
+        span {
+          display: block;
+        }
+      }
+    }
+
+    .handbook-body {
+
+      div {
+
+        p {
+          span {
+            margin: 1rem 0;
+          
+            a {
+              img {
+                overflow: hidden;
+                border: $border;
+                border-radius: $border-radius;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

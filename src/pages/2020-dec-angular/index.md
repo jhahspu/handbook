@@ -1,19 +1,54 @@
 ---
-path: "/angularjs"
+path: "/angular-basics"
 date: "Dec '20"
 title: "Angular Basics"
 author: "jhahspu"
-category: "AngularJS"
+category: "angular"
 ---
 
 
-# Template Driven Forms
+### Setup
+```javascript
+npm i -g @angular/cli
+
+// create new app
+ng new [project_name]
+
+// serve on default port 4200
+ng serve
+
+// generate component
+ng g c components/[component_name]
+
+// generate service
+ng g s services/[service_name]
+
+// generate guard
+ng g guard guards/[guard_name]
+
+// if the ngcc ERRORs out add it to 'package.json':
+"scripts": {
+    ...
+    "postinstall": "ngcc"
+}
+
+// run:
+npm install
+
+// serve again and it should work
+```
 
 
+#####
 
-# Directives
+
+### Directives
 - Structural directives: modify the structure of DOM
 - Attribute directives: modify the properties of DOM objects
+
+
+#####
+
 
 ### Safe Traversal Operator
 
@@ -37,6 +72,9 @@ export class AppComponent {
     }
 }
 ```
+
+
+#####
 
 
 ### ngStyle
@@ -66,8 +104,10 @@ export class AppComponent {
 ```
 
 
-### ngClass
+#####
 
+
+### ngClass
 ```javascript
 import { Component } from '@angular/core';
 
@@ -90,8 +130,10 @@ export class AppComponent {
 ```
 
 
-### ngFor and trackBy - for large list and complex markup
+#####
 
+
+### ngFor and trackBy - for large list and complex markup
 ```javascript
 import { Component } from '@angular/core';
 
@@ -124,8 +166,10 @@ export class AppComponent {
 ```
 
 
-### ngFor and Change Detection
+#####
 
+
+### ngFor and Change Detection
 [Angular: ngForOf](https://angular.io/api/common/NgForOf)
 
 ```javascript
@@ -160,8 +204,11 @@ export class AppComponent {
 }
 ```
 
-### ngSwitchCase - tab-like containers
 
+#####
+
+
+### ngSwitchCase - tab-like containers
 ```javascript
 import { Component } from '@angular/core';
 
@@ -185,8 +232,10 @@ export class AppComponent {
 ```
 
 
-### Hidden attribute - for small element trees
+#####
 
+
+### Hidden attribute - for small element trees
 ```javascript
 import { Component } from '@angular/core';
 
@@ -207,8 +256,10 @@ export class AppComponent {
 ```
 
 
-### ngIf directive - for large element trees (time consideration)
+#####
 
+
+### ngIf directive - for large element trees (time consideration)
 ```javascript
 import { Component } from '@angular/core';
 
@@ -217,7 +268,7 @@ import { Component } from '@angular/core';
     template: `
     <div *ngIf="list.length > 0; then showList else emptyList"></div>
     <ng-template #showList>List:</ng-template>
-    <ng-templat #emptyListe>List is empty</ng-template>
+    <ng-template #emptyListe>List is empty</ng-template>
     `
 })
 export class AppComponent {
@@ -226,12 +277,14 @@ export class AppComponent {
 ```
 
 
+#####
 
-# Re-usable Components
+
+## Re-usable Components
+
 
 ### ngContainer
 #### sample.component.html
-
 ```html
 <div class="panel panel-default">
     <div class="panel-heading">
@@ -243,38 +296,11 @@ export class AppComponent {
 </div>
 ```
 
-#### app.component.html
 
+#### app.component.html
 ```html
 <sample-component>
     <ng-container>Heading</ng-container>
-    <div class="body">
-        <h2>Body</h2>
-        <p>Some basic text in a paragraph</p>
-    </div>
-</sample-com>
-```
-
-
-### ngContent
-#### sample.component.html
-
-```html
-<div class="panel panel-default">
-    <div class="panel-heading">
-        <ng-content select=".heading"></ng-content>
-    </div>
-    <div class="panel-body">
-        <ng-content select=".body"></ng-content>
-    </div>
-</div>
-```
-
-#### app.component.html
-
-```html
-<sample-component>
-    <div class="heading">Heading</div>
     <div class="body">
         <h2>Body</h2>
         <p>Some basic text in a paragraph</p>
@@ -283,16 +309,19 @@ export class AppComponent {
 ```
 
 
+#####
+
+
 ### Output Properties
 #### app.component.html
 
+```html
+<!-- If passing events, include the "$event" in the method -->
+<div [isFavorite]="post.isFavorite" (isChanged)="onFavoriteChanged($event)"></div>
 ```
-// If passing events, include the "$event" in the method
-<sample [isFavorite]="post.isFavorite" (isChanged)="onFavoriteChanged($event)"></sample>
-```
+
 
 #### app.component.ts with Alias
-
 ```javascript
 import { Component } from '@angular/core';
 import { SampleWhatChanged } from './sample.component';
@@ -319,8 +348,8 @@ export class AppComponent {
 }
 ```
 
-#### sample.component.ts with Alias and Interface
 
+#### sample.component.ts with Alias and Interface
 ```javascript
 import { Component, Input, Output, EventEmmiter } from '@angular/core';
 
@@ -349,14 +378,17 @@ export interface SampleWhatChanged {
 ```
 
 
+#####
+
+
 ### Input Properties
 #### app.component.html
+```html
+<div [isFavorite]="post.isFavorite"></div>
+```
 
-```
-<sample [isFavorite]="post.isFavorite"></sample>
-```
+
 #### sample.component.html
-
 ```html
 <span
   class="glyphicon"
@@ -365,6 +397,8 @@ export interface SampleWhatChanged {
   (click)="onClick()">
 </span>
 ```
+
+
 #### sample.component.ts with Alias
 ```javascript
 import { Component, Input } from '@angular/core';
@@ -383,8 +417,8 @@ export class SampleComponent {
 }
 ```
 
-#### sample.component.ts Variant 2
 
+#### sample.component.ts Variant 2
 ```javascript
 import { Component } from '@angular/core';
 
@@ -405,13 +439,12 @@ export class SampleComponent {
 ```
 
 
+#####
 
 
-# Displaying Data and Handling Events
-
-### Custom Pipes
+### Displaying Data and Handling Events
+#### Custom Pipes
 #### Create summary.pipe.ts in the app folder
-
 ```javascript
 import { Pipe, PipeTransform } from '@angular/core';
 
@@ -427,8 +460,9 @@ export class SummaryPipe implements PipeTransform {
     }
 }
 ```
-#### Register in app.module
 
+
+#### Register in app.module
 ```javascript
 import { SummaryPipe } from './summary.pipe';
 ...
@@ -441,8 +475,9 @@ import { SummaryPipe } from './summary.pipe';
     ]
 })
 ```
-#### Usage:
 
+
+### Usage:
 ```javascript
 import { Component } from '@angular/core';
 
@@ -459,10 +494,12 @@ export class SampleComponent {
 }
 ```
 
+
+#####
+
+
 ### Pipes
-
 [Angular Date Pipes](https://angular.io/api/common/DatePipe)
-
 ```javascript
 import { Component } from '@angular/core';
 
@@ -490,8 +527,10 @@ export class SampleComponent {
 ```
 
 
-### Two-Way Binding
+#####
 
+
+### Two-Way Binding
 ```javascript
 // to use ngModel import {FormsModule} from '@angular/forms' in app.module.ts
 // register 'FormsModule' in 'imports'
@@ -513,8 +552,11 @@ export class SampleComponent {
 }
 ```
 
-### Template Variables
 
+#####
+
+
+### Template Variables
 ```javascript
 import { Component } from '@angular/core';
 
@@ -529,8 +571,11 @@ export class SampleComponent {
 }
 ```
 
-### Event Filtering
 
+#####
+
+
+### Event Filtering
 ```javascript
 import { Component } from '@angular/core';
 
@@ -545,8 +590,11 @@ export class SampleComponent {
 }
 ```
 
-### Event Binding
 
+#####
+
+
+### Event Binding
 ```javascript
 import { Component } from '@angular/core';
 
@@ -563,8 +611,11 @@ export class SampleComponent {
 }
 ```
 
-### Style Binding
 
+#####
+
+
+### Style Binding
 ```javascript
 import { Component } from '@angular/core';
 
@@ -578,8 +629,11 @@ export class SampleComponent {
 }
 ```
 
-### Class Binding
 
+#####
+
+
+### Class Binding
 ```javascript
 import { Component } from '@angular/core';
 
@@ -592,6 +646,10 @@ export class SampleComponent {
     isActive = true;
 }
 ```
+
+
+#####
+
 
 ### Attribute Binding
 - binding a property of the DOM object and not the attribute of the html element
@@ -620,6 +678,10 @@ export class SampleComponent {
 }
 ```
 
+
+#####
+
+
 ### Property Binding
 - Property binding is one way, component -> dom
 - Interpolation is best for dynamic content (text) in headings, divs, lists, etc
@@ -645,10 +707,13 @@ export class SampleComponent {
 ```
 
 
+#####
 
-# Services
-### Create service as sample.service.ts
 
+### Services
+
+
+#### Create service as sample.service.ts
 ```javascript
 export class SampleService {
     getItems() {
@@ -656,8 +721,9 @@ export class SampleService {
     }
 }
 ```
-### Using the service in the components
 
+
+### Using the service in the components
 ```javascript
 import { Component } from '@angular/core';
 import { SampleService } from './sample.service';
@@ -682,8 +748,8 @@ export class SampleComponent {
 }
 ```
 
-### Register dependency in app.module.ts
 
+#### Register dependency in app.module.ts
 ```javascript
 import { SampleService } from './sample.service';
 ...
@@ -698,8 +764,10 @@ import { SampleService } from './sample.service';
 ```
 
 
-# Templates and Directives
+#####
 
+
+### Templates and Directives
 ```javascript
 import { Component } from '@angular/core';
 
@@ -727,9 +795,12 @@ export class SampleComponent {
 }
 ```
 
-# Components
-### Create component sample.component.ts
 
+#####
+
+
+### Components
+#### Create component sample.component.ts
 ```javascript
 import { Component } from '@angular/core';
 
@@ -742,8 +813,9 @@ export class SampleComponent {
 
 }
 ```
-### Register component in app.module.ts
 
+
+#### Register component in app.module.ts
 ```javascript
 import { SampleComponent } from './sample.component';
 ...
@@ -758,7 +830,6 @@ import { SampleComponent } from './sample.component';
 ```
 
 ### Add element to HTML markup app.component.html
-
 ```javascript
 ...
 <sample></sample>
@@ -769,15 +840,18 @@ import { SampleComponent } from './sample.component';
 // </courses>
 ```
 
-# Bootstrap
-### CSS
 
-```css
+#####
+
+
+### Bootstrap
+#### SCSS
+```scss
 @import "~bootstrap/dist/css/bootstrap.css";
 ```
 
-### Usage
 
+### Usage
 ```javascript
 import { Component } from '@angular/core';
 
@@ -790,7 +864,6 @@ export class SampleComponent {
 ```
 
 ### Bootstrap Setup
-
 ```javascript
 npm install bootstrap --save
 
@@ -798,34 +871,4 @@ npm install bootstrap --save
 "bootstrap": "^x.y.z"
 // x = major // y: minor // z: patch
 // ^ = use most recent major version
-```
-
-
-# Setup
-
-```javascript
-npm i -g @angular/cli
-
-// create new app
-ng new [project_name]
-
-// serve on default port 4200
-ng serve
-
-// generate component
-ng g c components/[component_name]
-
-// generate service
-ng g s services/[service_name]
-
-// if the ngcc ERRORs out add it to 'package.json':
-"scripts": {
-    ...
-    "postinstall": "ngcc"
-}
-
-// run:
-npm install
-
-// serve again and it should work
 ```
