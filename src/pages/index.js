@@ -11,7 +11,8 @@ const IndexPage = ({data}) => (
         {data.allMarkdownRemark.edges.map(post => (
           <Link
             key={post.node.id}
-            className="post"
+
+            className={`post ${post.node.frontmatter.category}`}
             to={post.node.frontmatter.path}
             data-text={post.node.frontmatter.title}
             data-cat={post.node.frontmatter.category}>

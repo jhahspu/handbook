@@ -10,7 +10,7 @@ const Template = ({data}) => {
   return (
     <Layout>
       <SEO title={post.frontmatter.title} />
-      <div className="hb">
+      <div className={`hb ${post.frontmatter.category}`}>
         <div className="handbook">
           <div className="handbook-head">
             <h1>{post.frontmatter.title}</h1>

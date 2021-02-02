@@ -8,7 +8,7 @@
     padding: 1rem 0;
 
     .post {
-      @include glass($glass-txt, $glass-bg, $glass-blur);
+      // @include glass($glass-txt, $glass-bg, $glass-blur);
       padding: .75rem;
       border-radius: .5rem;
       box-shadow: $shadow-a;
@@ -18,7 +18,12 @@
       user-select: none;
 
       &:hover {
-        @include glass($glass-txt, $glass-bg-acc, $glass-blur);
+        // @include glass($glass-txt, $glass-bg-acc, $glass-blur);
+        filter: brightness(80%);
+      }
+
+      &.vanillajs {
+        @include glass($main-9, $vanillajs, $glass-blur);
       }
 
       & > * {
@@ -40,11 +45,9 @@
         text-align: center;
       }
       .post-category {
-        color: $main-8;
         font-size: 1rem;
       }
       .post-date {
-        color: $main-7;
         font-size: .9rem;
         text-transform: uppercase;
       }
