@@ -46,10 +46,10 @@
   }
 }
 
-@mixin glass($color, $bg, $blur) {
+@mixin glass($color, $bg) {
   border: 2px solid transparent;
   background-clip: padding-box;
   color: $color;
   background-color: $bg;
-  backdrop-filter: $blur;
+  backdrop-filter: $glass-blur;
 }

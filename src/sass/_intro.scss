@@ -1,6 +1,29 @@
 .intro {
   @include container($width-100);
 
+  .search {
+    padding: 1.5rem 0 .5rem;
+    display: grid;
+    place-content: center;
+
+    input {
+      padding: .5rem 1rem;
+      width: 100%;
+      max-width: 15rem;
+      color: $main-1;
+      background-color: $main-8;
+      border: 2px solid $main-8;
+      outline: none;
+      border-radius: $border-radius;
+      box-shadow: $shadow-a;
+      font-size: 1.2rem;
+
+      &:focus {
+        border: 2px solid $acc;
+      }
+    }
+  }
+
   .posts {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
@@ -8,7 +31,6 @@
     padding: 1rem 0;
 
     .post {
-      // @include glass($glass-txt, $glass-bg, $glass-blur);
       padding: .75rem;
       border-radius: .5rem;
       box-shadow: $shadow-a;
@@ -17,13 +39,18 @@
       transition: all 0.15s ease;
       user-select: none;
 
-      &:hover {
-        // @include glass($glass-txt, $glass-bg-acc, $glass-blur);
-        filter: brightness(80%);
-      }
+      &.cat-angular { @include glass($main-9, $angular) }
+      &.cat-gatsby { @include glass($main-9, $gatsby) }
+      &.cat-go { @include glass($main-9, $go) }
+      &.cat-php { @include glass($main-9, $php) }
+      &.cat-powershell { @include glass($main-9, $powershell) }
+      &.cat-python { @include glass($main-9, $python) }
+      &.cat-typescript { @include glass($main-9, $typescript) }
+      &.cat-sass { @include glass($main-9, $sass) }
+      &.cat-vanillajs { @include glass($main-9, $vanillajs) }
 
-      &.vanillajs {
-        @include glass($main-9, $vanillajs, $glass-blur);
+      &:hover {
+        filter: brightness(80%);
       }
 
       & > * {

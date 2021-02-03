@@ -1,6 +1,6 @@
 #home {
   @include btn(1rem, $main-1, $acc);
-  @include glass($glass-txt, $glass-bg-acc, $glass-blur);
+  @include glass($glass-txt, $glass-bg-acc);
   position: fixed;
   left: 5%;
   bottom: 5%;
@@ -11,7 +11,7 @@
 }
 
 .hb {
-  @include glass($glass-txt, $glass-bg, $glass-blur);
+  @include glass($glass-txt, $glass-bg);
   min-height: 100vh;
   padding-bottom: 10rem;
 
