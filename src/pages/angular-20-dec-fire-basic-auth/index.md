@@ -9,6 +9,7 @@ category: "angular"
 
 
 ### Initialize new angular app
+
 ```powershell
 # If not working then update cli & core
 ng update @angular/cli
@@ -35,6 +36,7 @@ ng g guard guards/auth
 
 
 ### Setup Firebase Project
+
 - (Create new Firebase Project)[https://console.firebase.google.com/]
 - Project Overview: Register App & have firebaseConfig prepared for Step 3 (to be regitered in the app env)
 - Authentication -> Enable Sign-in Provider (eg Google)
@@ -45,6 +47,7 @@ ng g guard guards/auth
 
 ### Firebase Hosting
 #### Powershell:
+
 ```powershell
 
 # check version
@@ -75,6 +78,7 @@ firebase deploy
 
 ### Setup Env variables
 #### environmnets/environment.ts | environment.prod.ts
+
 ```javascript
 export const environment = {
   ...
@@ -97,6 +101,7 @@ export const environment = {
 
 ### Initialize app
 #### app.module.ts
+
 ```javascript
 ...
 // Fire
@@ -128,6 +133,7 @@ export class AppModule { }
 
 ### Setup Routes
 #### app-routing.module.ts
+
 ```javascript
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -152,6 +158,7 @@ export class AppRoutingModule { }
 
 ### Create User Interface
 #### interfaces/user.model.ts
+
 ```javascript
 export interface User {
   uid: string;
@@ -167,6 +174,7 @@ export interface User {
 
 ### Auth Service
 #### services/auth.service.ts
+
 ```javascript
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
@@ -239,6 +247,7 @@ export class AuthService {
 
 ### Using Auth Service
 #### components/home/home.component.ts
+
 ```javascript
 import { Component } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
@@ -261,6 +270,7 @@ export class HomeComponent {
 
 ### HTML sample for handling login/logout
 #### components/home/home.component.html
+
 ```html
 <h1>Home Page</h1>
 
@@ -298,6 +308,7 @@ export class HomeComponent {
 
 ### Protecting Routes
 #### app-routing.module.ts
+
 ```javascript
 ...
 import { AuthGuard } from './auth.guard';
@@ -312,6 +323,7 @@ import { AuthGuard } from './auth.guard';
 
 ### Setup Guard
 #### guards/auth.quard.ts
+
 ```javascript
 import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
@@ -347,6 +359,7 @@ export class AuthGuard implements CanActivate {
 
 
 ###  Firebase Database Rules:
+
 ```javascript
 service cloud.firestore {
   match /databases/{database}/documents {

@@ -8,34 +8,35 @@ category: "angular"
 
 
 ### Setup
-```javascript
+
+```powershell
 npm i -g @angular/cli
 
-// create new app
+# create new app
 ng new [project_name]
 
-// serve on default port 4200
+# serve on default port 4200
 ng serve
 
-// generate component
+# generate component
 ng g c components/[component_name]
 
-// generate service
+# generate service
 ng g s services/[service_name]
 
-// generate guard
+# generate guard
 ng g guard guards/[guard_name]
 
-// if the ngcc ERRORs out add it to 'package.json':
+# if the ngcc ERRORs out add it to 'package.json':
 "scripts": {
     ...
     "postinstall": "ngcc"
 }
 
-// run:
+# run:
 npm install
 
-// serve again and it should work
+# serve again and it should work
 ```
 
 
@@ -43,6 +44,7 @@ npm install
 
 
 ### Directives
+
 - Structural directives: modify the structure of DOM
 - Attribute directives: modify the properties of DOM objects
 
@@ -108,6 +110,7 @@ export class AppComponent {
 
 
 ### ngClass
+
 ```javascript
 import { Component } from '@angular/core';
 
@@ -134,6 +137,7 @@ export class AppComponent {
 
 
 ### ngFor and trackBy - for large list and complex markup
+
 ```javascript
 import { Component } from '@angular/core';
 
@@ -170,6 +174,7 @@ export class AppComponent {
 
 
 ### ngFor and Change Detection
+
 [Angular: ngForOf](https://angular.io/api/common/NgForOf)
 
 ```javascript
@@ -209,6 +214,7 @@ export class AppComponent {
 
 
 ### ngSwitchCase - tab-like containers
+
 ```javascript
 import { Component } from '@angular/core';
 
@@ -236,6 +242,7 @@ export class AppComponent {
 
 
 ### Hidden attribute - for small element trees
+
 ```javascript
 import { Component } from '@angular/core';
 
@@ -260,6 +267,7 @@ export class AppComponent {
 
 
 ### ngIf directive - for large element trees (time consideration)
+
 ```javascript
 import { Component } from '@angular/core';
 
@@ -285,6 +293,7 @@ export class AppComponent {
 
 ### ngContainer
 #### sample.component.html
+
 ```html
 <div class="panel panel-default">
     <div class="panel-heading">
@@ -298,6 +307,7 @@ export class AppComponent {
 
 
 #### app.component.html
+
 ```html
 <sample-component>
     <ng-container>Heading</ng-container>
@@ -322,6 +332,7 @@ export class AppComponent {
 
 
 #### app.component.ts with Alias
+
 ```javascript
 import { Component } from '@angular/core';
 import { SampleWhatChanged } from './sample.component';
@@ -350,6 +361,7 @@ export class AppComponent {
 
 
 #### sample.component.ts with Alias and Interface
+
 ```javascript
 import { Component, Input, Output, EventEmmiter } from '@angular/core';
 
@@ -383,12 +395,14 @@ export interface SampleWhatChanged {
 
 ### Input Properties
 #### app.component.html
+
 ```html
 <div [isFavorite]="post.isFavorite"></div>
 ```
 
 
 #### sample.component.html
+
 ```html
 <span
   class="glyphicon"
@@ -400,6 +414,7 @@ export interface SampleWhatChanged {
 
 
 #### sample.component.ts with Alias
+
 ```javascript
 import { Component, Input } from '@angular/core';
 
@@ -419,6 +434,7 @@ export class SampleComponent {
 
 
 #### sample.component.ts Variant 2
+
 ```javascript
 import { Component } from '@angular/core';
 
@@ -445,6 +461,7 @@ export class SampleComponent {
 ### Displaying Data and Handling Events
 #### Custom Pipes
 #### Create summary.pipe.ts in the app folder
+
 ```javascript
 import { Pipe, PipeTransform } from '@angular/core';
 
@@ -463,6 +480,7 @@ export class SummaryPipe implements PipeTransform {
 
 
 #### Register in app.module
+
 ```javascript
 import { SummaryPipe } from './summary.pipe';
 ...
@@ -478,6 +496,7 @@ import { SummaryPipe } from './summary.pipe';
 
 
 ### Usage:
+
 ```javascript
 import { Component } from '@angular/core';
 
@@ -499,7 +518,9 @@ export class SampleComponent {
 
 
 ### Pipes
+
 [Angular Date Pipes](https://angular.io/api/common/DatePipe)
+
 ```javascript
 import { Component } from '@angular/core';
 
@@ -531,6 +552,7 @@ export class SampleComponent {
 
 
 ### Two-Way Binding
+
 ```javascript
 // to use ngModel import {FormsModule} from '@angular/forms' in app.module.ts
 // register 'FormsModule' in 'imports'
@@ -557,6 +579,7 @@ export class SampleComponent {
 
 
 ### Template Variables
+
 ```javascript
 import { Component } from '@angular/core';
 
@@ -576,6 +599,7 @@ export class SampleComponent {
 
 
 ### Event Filtering
+
 ```javascript
 import { Component } from '@angular/core';
 
@@ -595,6 +619,7 @@ export class SampleComponent {
 
 
 ### Event Binding
+
 ```javascript
 import { Component } from '@angular/core';
 
@@ -616,6 +641,7 @@ export class SampleComponent {
 
 
 ### Style Binding
+
 ```javascript
 import { Component } from '@angular/core';
 
@@ -634,6 +660,7 @@ export class SampleComponent {
 
 
 ### Class Binding
+
 ```javascript
 import { Component } from '@angular/core';
 
@@ -652,6 +679,7 @@ export class SampleComponent {
 
 
 ### Attribute Binding
+
 - binding a property of the DOM object and not the attribute of the html element
 - in most cases the html attr have a 1:1 mapping with DOM properties
 - it is possible to target html attributes: **[attr.colspan]**
@@ -683,6 +711,7 @@ export class SampleComponent {
 
 
 ### Property Binding
+
 - Property binding is one way, component -> dom
 - Interpolation is best for dynamic content (text) in headings, divs, lists, etc
 
@@ -714,6 +743,7 @@ export class SampleComponent {
 
 
 #### Create service as sample.service.ts
+
 ```javascript
 export class SampleService {
     getItems() {
@@ -724,6 +754,7 @@ export class SampleService {
 
 
 ### Using the service in the components
+
 ```javascript
 import { Component } from '@angular/core';
 import { SampleService } from './sample.service';
@@ -750,6 +781,7 @@ export class SampleComponent {
 
 
 #### Register dependency in app.module.ts
+
 ```javascript
 import { SampleService } from './sample.service';
 ...
@@ -768,6 +800,7 @@ import { SampleService } from './sample.service';
 
 
 ### Templates and Directives
+
 ```javascript
 import { Component } from '@angular/core';
 
@@ -801,6 +834,7 @@ export class SampleComponent {
 
 ### Components
 #### Create component sample.component.ts
+
 ```javascript
 import { Component } from '@angular/core';
 
@@ -816,6 +850,7 @@ export class SampleComponent {
 
 
 #### Register component in app.module.ts
+
 ```javascript
 import { SampleComponent } from './sample.component';
 ...
@@ -830,6 +865,7 @@ import { SampleComponent } from './sample.component';
 ```
 
 ### Add element to HTML markup app.component.html
+
 ```javascript
 ...
 <sample></sample>
@@ -846,12 +882,14 @@ import { SampleComponent } from './sample.component';
 
 ### Bootstrap
 #### SCSS
+
 ```scss
 @import "~bootstrap/dist/css/bootstrap.css";
 ```
 
 
 ### Usage
+
 ```javascript
 import { Component } from '@angular/core';
 
@@ -864,11 +902,12 @@ export class SampleComponent {
 ```
 
 ### Bootstrap Setup
-```javascript
+
+```powershell
 npm install bootstrap --save
 
-// package.json
+# package.json
 "bootstrap": "^x.y.z"
-// x = major // y: minor // z: patch
-// ^ = use most recent major version
+# x = major // y: minor // z: patch
+# ^ = use most recent major version
 ```

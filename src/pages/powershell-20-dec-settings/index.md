@@ -9,6 +9,7 @@ category: "powershell"
 
 
 ### Allow Scripts
+
 ```powershell
 get-executionpolicy
 # Restricted
@@ -23,9 +24,11 @@ set-executionpolicy remotesigned
 ### Basic Settings
 
 #### Quick Access Toolbar (File Explorer)
+
 - open file explorer
 - go to "File" -> "Open Windows Powershell" -> Right click on "Open Windows Powershell as Admin" -> "Add To Quick Access Toolbar"
 
 #### Custom Appearance (Font Size, Colors, etc)
+
 - Right click on title bar and go to Properties
 

@@ -9,15 +9,21 @@ category: "typescript"
 
 
 ### What is Typescript
+
 - Superset of JavaScript
 - Strong/Static typed (optional)
 - Classes, Interfaces, Constructors, Access modifiers, Fields, Properties, etc
 - Catch errors at compile time
 
 
+#####
+
+
 
 ### Setup
+
 ```powershell
+
 npm install -g typescript
 
 # version
@@ -28,9 +34,14 @@ tsc *.ts [file_name].js
 ```
 
 
+#####
+
+
 
 ### Types
-```typescript
+
+```javascript
+
 let a: number;
 let b: string;
 let c: boolean;
@@ -43,9 +54,14 @@ let backgroundColor = Colors.Red;
 ```
 
 
+#####
+
+
 
 ### Type Assertion
-```typescript
+
+```javascript
+
 let message;
 message = 'abc';
 let endWithC = (<string>message).endsWith('c');
@@ -55,9 +71,14 @@ let alternativeWay = (message as string).endsWith('c');
 ```
 
 
+#####
+
+
 
 ### Arrow Functions
-```typescript
+
+```javascript
+
 const arrowFunction = () => {
   // do stuff
 }
@@ -68,9 +89,14 @@ const lambdaExpression = () => console.log('message');
 ```
 
 
+#####
+
+
 
 ### Interfaces
-```typescript
+
+```javascript
+
 interface Point {
   x: number,
   y: number
@@ -92,9 +118,14 @@ drawPoint({
 ```
 
 
+#####
+
+
 
 ### Classes
-```typescript
+
+```javascript
+
 class Point {
   // access modifiers outside constructor: public, private, protected
   // private x: number; 
@@ -133,9 +164,14 @@ point.draw();
 ```
 
 
+#####
+
+
 
 ### Modules
-```typescript
+
+```javascript
+
 // point.ts
 export class Point {
   constructor(private _x?: number, private _y?:number) { }
@@ -152,9 +188,13 @@ point.draw();
 ```
 
 
+#####
+
+
 
 ### Modules // Example
-```typescript
+
+```javascript
 // accessors are only available when targeting ES5 or higher
 tsc *.ts --target ES5 && node main.js
 

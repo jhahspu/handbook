@@ -8,6 +8,7 @@ category: "go"
 
 ### Project Setup
 #### Project init and get Gin package
+
 ```powershell
 go mod init github.com/[github_user]/[package_name]
 
@@ -20,6 +21,7 @@ go get github.com/gin-gonic/gin
 
 ### Basic Gin server
 #### server.go
+
 ```go
 package main
 
@@ -41,7 +43,9 @@ func main() {
   server.Run(":9000")
 }
 ```
+
 ![first run](img/run1.webp)
+
 ![postman](img/postman1.webp)
 
 
@@ -50,6 +54,7 @@ func main() {
 
 ### Create first End-Points
 #### entity/video.go
+
 ```go
 package entity
 
@@ -64,6 +69,7 @@ type Video struct {
 
 
 #### service/video-service.go
+
 ```go
 package service
 
@@ -98,8 +104,9 @@ func (service *videoService) FindAll() []entity.Video {
 ```
 
 
-#### Handlers for the HTTP Verbs GET and POST
+### Handlers for the HTTP Verbs GET and POST
 #### controller/video-controller.go
+
 ```go
 package controller
 
@@ -146,6 +153,7 @@ func (c *controller) Save(ctx *gin.Context) entity.Video {
 
 
 #### update server.go
+
 ```go
 package main
 
@@ -177,8 +185,11 @@ func main() {
   server.Run(":9000")
 }
 ```
+
 ![run2](img/run2.webp)
+
 ![postman2-1](img/postman2-1.webp)
+
 ![postman2-2](img/postman2-2.webp)
 
 
@@ -189,6 +200,7 @@ func main() {
 
 ### Custom Middleware
 #### middleware/logger.go
+
 ```go
 package middleware
 
@@ -219,6 +231,7 @@ func Logger() gin.HandlerFunc {
 
 
 #### updated server.go with custom Logger
+
 ```go
 package main
 ...
@@ -235,14 +248,18 @@ func main() {
   ...
 }
 ```
+
 ![run3](img/run3.webp)
+
 ![postman3-1](img/postman3-1.webp)
+
 ![postman3-1](img/postman3-2.webp)
 
 
 
 
 #### updated server.go with simple function to write Log to file
+
 ```go
 package main
 
@@ -261,12 +278,14 @@ func main() {
   ...
 }
 ```
+
 ![log1](img/log1.webp)
 
 
 
 
 #### middleware/basic-auth.go for basic authentication
+
 ```go
 package middleware
 
@@ -283,6 +302,7 @@ func BasicAuth() gin.HandlerFunc {
 
 
 #### updated server.go with middleware for basic authentication
+
 ```go
 package main
 ...
@@ -298,8 +318,11 @@ func main() {
   ...
 }
 ```
+
 ![run3-2](img/run3-2.webp)
+
 ![postman3-3](img/postman3-3.webp)
+
 ![postman3-4](img/postman3-4.webp)
 
 
@@ -308,6 +331,7 @@ func main() {
 
 ### Data binding and Validation
 #### update video.go
+
 ```go
 package entity
 
@@ -330,6 +354,7 @@ type Video struct {
 
 
 #### update controller/video-controller.go
+
 ```go
 package controller
 
@@ -351,6 +376,7 @@ func (c *controller) Save(ctx *gin.Context) error {
 
 
 #### updated server.go
+
 ```go
 package main
 
@@ -373,11 +399,14 @@ func main() {
 ...
 }
 ```
+
 ![postman4-1](img/postman4-1.webp)
+
 ![postman4-2](img/postman4-2.webp)
 
 
 #### Custom validator in Video struct - video.go
+
 ```go
 package entity
 ...
@@ -388,6 +417,7 @@ package entity
 
 
 #### validatos/validator.go
+
 ```go
 package validators
 
@@ -405,6 +435,7 @@ func ValidateLangTitle(field validator.FieldLevel) bool {
 ```
 
 #### updated Save method in controller/video-controller.go
+
 ```go
 package controller
 
@@ -428,7 +459,9 @@ func (c *controller) Save(ctx *gin.Context) error {
 	return nil
 }
 ```
+
 ![postman4-3](img/postman4-3.webp)
+
 ![postman4-4](img/postman4-4.webp)
 
 
@@ -439,6 +472,7 @@ func (c *controller) Save(ctx *gin.Context) error {
 
 
 #### server.go
+
 ```go
 package main
 ...
@@ -486,6 +520,7 @@ func main() {
 
 ### create templates/header -footer -index.html
 #### index.html 
+
 ```html
 {{ template "header.html" }}
 

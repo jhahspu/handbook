@@ -11,8 +11,8 @@ $main-8: hsla(0, 0, 82%, 1);
 $main-9: hsla(0, 0, 92%, 1);
 
 
-$glass-bg: hsla(0, 0%, 2%, .5);
-$glass-bg-acc: hsla(124, 77%, 34%, .5);
+$glass-bg: hsla(0, 0%, 2%, .44);
+$glass-bg-acc: hsla(124, 77%, 34%, .44);
 $glass-txt: hsla(0, 0%, 92%, 1);
 $glass-blur: blur(18px);
 
@@ -21,34 +21,47 @@ $acc: hsla(124, 77%, 34%, 1);
 $danger: hsla(354, 73%, 36%, 1);
 $info: hsla(214, 73%, 36%, 1);
 
+$hslA: .44;
+
 $angular: #dd0031;
 $angular: #c3002f;
-$angular: hsla(346, 100%, 38%, .44);
+$angular: hsla(345.5, 100%, 38.2%, $hslA);
+
+$firebase: #ff8a65;
+$firebase: hsla(14.4, 100%, 69.8%, $hslA);
 
 $gatsby: #5468ff;
-$gatsby: hsla(233, 100%, 66%, .44);
+$gatsby: hsla(233, 100%, 66.5%, $hslA);
 
 $go: #7fd5ea;
-$go: hsla(192, 72%, 71%, .44);
+$go: hsla(191.8, 71.8%, 70.8%, $hslA);
+
+$lodash: #284487;
+$lodash: hsla(222.3, 54.3%, 34.3%, $hslA);
+
 
 $php: #4f5b93;
 $php: #8892bf;
-$php: hsla(229, 30%, 44%, .44);
+$php: hsla(229.4, 30.1%, 44.3%, $hslA);
 
 $powershell: #0273b7;
-$powershell: hsla(203, 98%, 36%, .44);
+$powershell: hsla(202.5, 97.8%, 36.3%, $hslA);
 
 $python: #3776ab;
-$python: hsla(207, 51%, 44%, .44);
+$python: hsla(207.4, 51.3%, 44.3%, $hslA);
 
-$typescript: #3178c6;
-$typescript: hsla(211, 60%, 48%, .44);
+$rxjs: #d81b60;
+$rxjs: hsla(338.1, 77.8%, 47.6%, $hslA);
 
 $sass: #bf4080;
-$sass: hsla(330, 50%, 50%, .44);
+$sass: hsla(329.8, 49.8%, 50%, $hslA);
+
+$typescript: #3178c6;
+$typescript: hsla(211.4, 60.3%, 48.4%, $hslA);
+
 
 $vanillajs: #f7e018;
-$vanillajs: hsla(54, 93%, 53%, .44);
+$vanillajs: hsla(53.8, 93.3%, 53.1%, $hslA);
 
 
 $shadow-a: 0 1px 2px rgba(0,0,0,0.07), 

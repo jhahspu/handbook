@@ -12,7 +12,7 @@ const IndexPage = props => {
     query: emptyQuery,
   })
   const handleInputChange = event => {
-    console.log(event.target.value)
+    // console.log(event.target.value)
     const query = event.target.value
     const {data} = props
     const posts = data.allMarkdownRemark.edges || []

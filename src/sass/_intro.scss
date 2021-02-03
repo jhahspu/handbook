@@ -28,25 +28,44 @@
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
     gap: 1rem;
-    padding: 1rem 0;
+    padding: 1rem 0 4rem;
 
     .post {
       padding: .75rem;
       border-radius: .5rem;
       box-shadow: $shadow-a;
       text-align: center;
-      z-index: 1;
+      
       transition: all 0.15s ease;
       user-select: none;
+      z-index: 1;
+      
+      
 
       &.cat-angular { @include glass($main-9, $angular) }
+
+      &.cat-firebase { @include glass($main-9, $firebase) }
+
       &.cat-gatsby { @include glass($main-9, $gatsby) }
+
       &.cat-go { @include glass($main-9, $go) }
+
+      &.cat-jwt { @include glass($main-9, $glass-bg) }
+
+      &.cat-lodash { @include glass($main-9, $lodash) }
+
       &.cat-php { @include glass($main-9, $php) }
+
       &.cat-powershell { @include glass($main-9, $powershell) }
+
       &.cat-python { @include glass($main-9, $python) }
-      &.cat-typescript { @include glass($main-9, $typescript) }
+
+      &.cat-rxjs { @include glass($main-9, $rxjs) }
+
       &.cat-sass { @include glass($main-9, $sass) }
+
+      &.cat-typescript { @include glass($main-9, $typescript) }
+      
       &.cat-vanillajs { @include glass($main-9, $vanillajs) }
 
       &:hover {

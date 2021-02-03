@@ -63,7 +63,9 @@ Options:
 
 
 ### Filesystem
+
 Work with files
+
 ```javascript
 npm i gatsby-source-filesystem
 
@@ -85,7 +87,9 @@ plugins: [
 
 
 ### Transformer Remark
+
 Render markup to html.
+
 ```javascript
 npm i gatsby-transformer-remark
 
@@ -116,7 +120,8 @@ plugins: [
 
 
 ### Catch Links
-```
+
+```powershell
 npm i gatsby-plugin-catch-links
 ```
 
@@ -125,6 +130,7 @@ npm i gatsby-plugin-catch-links
 
 
 ### Sass
+
 ```javascript
 npm install node-sass@4.14.1 gatsby-plugin-sass
 
