@@ -4,11 +4,18 @@
 [Live on Netlify](https://silly-bhabha-774df4.netlify.app)
 
 ToDo:
-- [x] Golang - Gin
+- [ ] Golang - Cheatsheet
+- [ ] PHP
+- [ ] Python
 
-- [x] Typescript
+- [x] Angular
+- [x] Firebase
 - [x] Gatsby
-- [ ] Angular
-
+- [x] Golang
+- [x] JWT
+- [x] Lodash
 - [x] Powershell
+- [x] RxJS
+- [x] Sass
+- [x] Typescript
 

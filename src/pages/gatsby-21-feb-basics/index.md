@@ -144,3 +144,82 @@ plugins: [
 // rename 'layout.css' to 'layout.scss'
 // in 'layout.js' import './layout.scss'
 ```
+
+
+#####
+
+
+### PWA
+
+
+
+- It must run under HTTPS.
+- It must include a Web App Manifest, which is a JSON file that provides the browser with information about your web app (name, icons, start_url, background-color, etc), and makes it possible for users to save to their home screen.
+- Implement a service worker that provides support for an offline experience and makes your site more resilient to bad network connections. It’s a script that runs separately in the background, supporting features like push notifications and background sync.
+
+
+
+```powershell
+
+npm install --save gatsby-plugin-manifest 
+
+npm install --save gatsby-plugin-offline
+```
+
+#### gatsby-config.js
+
+```javascript
+
+module.exports = {
+  plugins: [
+    `gatsby-plugin-offline`,
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `Autho`,
+        short_name: `Author`,
+        start_url: `/`,
+        background_color: `#0e2439`,
+        theme_color: `#0e2439`,
+        display: `standalone`,
+        // Automatic icons - include here a big size
+        icon: `src/images/icon-48x48.png`, // Path relative to the root 
+
+        // Manually specify icons for different sizes
+        icons: [ // manually, so they go to static folder:
+          {
+            src: `/static/icons/android-icon-48x48.png`,
+            sizes: `48x48`,
+            type: `image/png`,
+          },
+          {
+            src: `/static/icons/android-icon-72x72.png`,
+            sizes: `72x72`,
+            type: `image/png`,
+          },
+          {
+            src: `/static/icons/android-icon-96x96.png`,
+            sizes: `96x96`,
+            type: `image/png`,
+          },
+          {
+            src: `/static/icons/android-icon-144x144.png`,
+            sizes: `144x144`,
+            type: `image/png`,
+          },
+          {
+            src: `/static/icons/android-icon-192x192.png`,
+            sizes: `192x192`,
+            type: `image/png`,
+          },
+          {
+            src: `/static/icons/ms-icon-310x310.png`,
+            sizes: `310x310`,
+            type: `image/png`,
+          }
+        ]
+      }
+    },
+  ],
+}
+```
