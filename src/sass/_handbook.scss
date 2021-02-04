@@ -14,6 +14,7 @@
   @include glass($glass-txt, $glass-bg);
   min-height: 100vh;
   padding-bottom: 10rem;
+  animation: backfilter .5s forwards;
 
   a {
     padding: .2rem .4rem;
@@ -61,4 +62,10 @@
       }
     }
   }
+}
+
+
+@keyframes backfilter {
+  from { backdrop-filter: blur(0px); }
+  to { backdrop-filter: blur(18px); }
 }
