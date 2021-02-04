@@ -12,9 +12,10 @@
 
 .hb {
   @include glass($glass-txt, $glass-bg);
+  border: none;
   min-height: 100vh;
   padding-bottom: 10rem;
-  animation: backfilter .5s forwards;
+  animation: backfilter .5s forwards cubic-bezier(0.075, 0.82, 0.165, 1);
 
   a {
     padding: .2rem .4rem;
