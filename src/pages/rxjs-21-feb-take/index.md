@@ -6,7 +6,7 @@ author: "jhahspu"
 category: "rxjs"
 ---
 
-
+[RxJS Operators](https://www.learnrxjs.io/learn-rxjs/operators)
 
 ### Take 1 value from source
 

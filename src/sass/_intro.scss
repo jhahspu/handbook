@@ -54,6 +54,8 @@
 
       &.cat-lodash { @include glass($main-9, $lodash) }
 
+      &.cat-other { @include glass($main-9, $glass-bg) }
+
       &.cat-php { @include glass($main-9, $php) }
 
       &.cat-powershell { @include glass($main-9, $powershell) }

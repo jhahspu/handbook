@@ -6,6 +6,10 @@ author: "jhahspu"
 category: "angular"
 ---
 
+
+[NgRx](https://ngrx.io/docs)
+
+
 ### What is Redux
 
 + manage the application state in a predictable way

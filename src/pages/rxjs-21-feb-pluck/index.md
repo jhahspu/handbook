@@ -6,6 +6,7 @@ author: "jhahspu"
 category: "rxjs"
 ---
 
+[RxJS Operators](https://www.learnrxjs.io/learn-rxjs/operators)
 
 #### Maps each source value (an object) to its specified nested property.
 

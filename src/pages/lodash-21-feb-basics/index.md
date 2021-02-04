@@ -6,6 +6,8 @@ author: "jhahspu"
 category: "lodash"
 ---
 
+[Lodash](https://lodash.com/docs/)
+
 
 ### Setup
 

@@ -6,6 +6,7 @@ author: "jhahspu"
 category: "gatsby"
 ---
 
+[Gatsby Docs](https://www.gatsbyjs.com/docs/)
 
 
 ### Setup and CLI commands
