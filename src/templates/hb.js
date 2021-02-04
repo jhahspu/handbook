@@ -26,11 +26,11 @@ const Template = ({data}) => {
       </div>
 
       
-        <Link
-          id="home"
-          to="/">
-            Home
-        </Link>
+      <Link
+        id="home"
+        to="/">
+          Home
+      </Link>
       
     </Layout>
   )

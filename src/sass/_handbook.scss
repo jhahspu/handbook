@@ -15,6 +15,18 @@
   min-height: 100vh;
   padding-bottom: 10rem;
 
+  a {
+    padding: .2rem .4rem;
+    color: $main-8;
+    background-color: $link-bg;
+    border-radius: $border-radius;
+    transition: background-color .2s ease-in-out;
+
+    &:hover {
+      background-color: $info;
+    }
+  }
+
   .handbook {
     @include container($width-900);
 

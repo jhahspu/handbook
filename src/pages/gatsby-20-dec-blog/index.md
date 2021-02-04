@@ -37,7 +37,7 @@ category: "[category]"
 ## h2
 ### h3
 #### h4
-##### h5 -- I use it as line
+##### h5 -- I use it as hr
 
 + list
   - sub
@@ -60,6 +60,9 @@ First Header | Second Header
 ------------ | -------------
 Content from cell 1 | Content from cell 2
 Content in the first column | Content in the second column
+
+
+[![YT_ID](https://img.youtube.com/vi/YT_ID/0.jpg)](https://www.youtube.com/watch?v=YT_ID)
 
 //```javascript
 function fancyAlert(arg) {
