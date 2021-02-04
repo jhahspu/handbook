@@ -105,11 +105,11 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `gatsby-starter-default`,
-        short_name: `starter`,
+        name: `The Handbook`,
+        short_name: `tHB`,
         start_url: `/`,
-        background_color: `#663399`,
-        theme_color: `#663399`,
+        background_color: `#1f1f1f`,
+        theme_color: `#1f1f1f`,
         display: `minimal-ui`,
         icon: `src/images/handbook_logo.png`, // This path is relative to the root of the site.
         //icon: `src/images/gatsby-icon.png`,  This path is relative to the root of the site.
