@@ -1,7 +1,7 @@
 ---
 path: "/powershell"
-date: "Dec '20"
-title: "Powershell"
+date: "Feb '21"
+title: "Powershell Stuff"
 author: "jhahspu"
 category: "powershell"
 ---
