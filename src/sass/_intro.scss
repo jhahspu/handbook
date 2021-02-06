@@ -44,6 +44,8 @@
 
       &.cat-angular { @include glass($main-9, $angular) }
 
+      &.cat-docker { @include glass($main-9, $docker) }
+
       &.cat-firebase { @include glass($main-9, $firebase) }
 
       &.cat-gatsby { @include glass($main-9, $gatsby) }

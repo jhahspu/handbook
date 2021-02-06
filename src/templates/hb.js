@@ -4,6 +4,7 @@ import SEO from "../components/seo"
 import { graphql, Link } from "gatsby"
 
 
+
 const Template = ({data}) => {
   const post = data.markdownRemark
 
